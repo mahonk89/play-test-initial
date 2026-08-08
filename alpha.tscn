@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dt0nyo2iw0axe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jahai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
+albedo_color = Color(0.37834537, 0.45756543, 0.2468194, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jahai"]
+material = SubResource("StandardMaterial3D_rbrcd")
+size = Vector3(15, 1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jahai"]
+size = Vector3(15, 1, 15)
+
+[node name="Alpha" type="Node3D" unique_id=1266480185]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=761353040]
+physics_material_override = SubResource("PhysicsMaterial_jahai")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=658254848]
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=157028975]
+shape = SubResource("BoxShape3D_jahai")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=448513714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.414215, -2.3918295)
