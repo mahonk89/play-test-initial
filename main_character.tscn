@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://0u1cedglc1i0"]
+
+[ext_resource type="Script" uid="uid://cxg1cyjc4o661" path="res://main_character.gd" id="1_48ufq"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_rbrcd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbrcd"]
+
+[node name="MainCharacter" type="CharacterBody3D" unique_id=1547992771]
+script = ExtResource("1_48ufq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=526687121]
+mesh = SubResource("PrismMesh_rbrcd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311911187]
+shape = SubResource("BoxShape3D_rbrcd")
