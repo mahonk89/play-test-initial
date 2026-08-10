@@ -26,3 +26,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+# Print the input event to Output (key press, mouse buttons/movement)
+func _input(event):
+	print(event.as_text())
+	
