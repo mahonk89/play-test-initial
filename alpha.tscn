@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c6yc8dt4xxehh" path="res://block_static.tscn" id="2_dfvcg"]
 [ext_resource type="PackedScene" uid="uid://0u1cedglc1i0" path="res://main_character.tscn" id="2_unq0f"]
 [ext_resource type="Texture2D" uid="uid://cq2bnh3x7iqkc" path="res://icon.svg" id="3_5w10q"]
+[ext_resource type="PackedScene" uid="uid://bx2aifw53pnh0" path="res://coin.tscn" id="3_kjnjc"]
 [ext_resource type="Script" uid="uid://dbjwabpdspb5u" path="res://sprite_godot.gd" id="4_qcnow"]
+[ext_resource type="PackedScene" uid="uid://cc2mu6p0ixjeq" path="res://ui.tscn" id="7_rhi8f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jahai"]
 
@@ -19,6 +21,8 @@ size = Vector3(15, 1, 15)
 size = Vector3(15, 1, 15)
 
 [node name="Alpha" type="Node3D" unique_id=1266480185]
+
+[node name="UI" parent="." unique_id=1379572987 instance=ExtResource("7_rhi8f")]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=761353040]
 physics_material_override = SubResource("PhysicsMaterial_jahai")
@@ -52,6 +56,39 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.86932397, 0)
 [node name="blockStatic2" parent="Blocks_Static" unique_id=20235980 instance=ExtResource("2_dfvcg")]
 transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, 3.3576326, 0.88189054, 0)
 
+[node name="Coins" type="Node3D" parent="." unique_id=2135970350]
+metadata/_edit_group_ = true
+
+[node name="coin1" parent="Coins" unique_id=583558464 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.3129468, -0.44775486)
+
+[node name="coin2" parent="Coins" unique_id=1065922726 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.1790037, 1.0107651, 0)
+
+[node name="coin3" parent="Coins" unique_id=728922373 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.3922148, 2.915008, 0.5745933)
+
+[node name="coin4" parent="Coins" unique_id=870938311 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.8937943, 2.915008, -0.6411636)
+
+[node name="coin5" parent="Coins" unique_id=155292799 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.59372926, 1.0559292, -6.4493084)
+
+[node name="coin6" parent="Coins" unique_id=1135424236 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.390789, 2.915008, -0.6200721)
+
+[node name="coin7" parent="Coins" unique_id=1828026272 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.9905803, 1.2961717, 3.4459703)
+
+[node name="coin8" parent="Coins" unique_id=1717802944 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.3656797, 2.915008, 0)
+
+[node name="coin9" parent="Coins" unique_id=489334993 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.3451972, 1.0771866, -3.9602027)
+
+[node name="coin10" parent="Coins" unique_id=141161829 instance=ExtResource("3_kjnjc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.4138222, 2.915008, -1.3107438)
+
 [node name="MainCharacter" parent="." unique_id=1547992771 instance=ExtResource("2_unq0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23015785, 1, 5.5929174)
 metadata/_edit_group_ = true
@@ -71,3 +108,5 @@ transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.70710
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5.3772435, -9.296546)
 texture = ExtResource("3_5w10q")
 script = ExtResource("4_qcnow")
+
+[connection signal="coins_changed" from="MainCharacter" to="UI" method="_on_main_character_coins_changed"]

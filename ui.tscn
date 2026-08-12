@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cc2mu6p0ixjeq"]
+
+[ext_resource type="Script" uid="uid://dtvmkdu77m4mj" path="res://ui.gd" id="1_fyqef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_48ufq"]
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control" unique_id=1379572987]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fyqef")
+
+[node name="CoinLabel" type="Label" parent="." unique_id=1417673051]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 87.0
+text = "Coins: 0
+"
+label_settings = SubResource("LabelSettings_48ufq")

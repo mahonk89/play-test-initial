@@ -16,5 +16,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	rotate_y(0.5*delta) # continuous rotation along the y axis
 	time_elapsed += delta # time tracker
-	var pulse = 5.5 + (sin(time_elapsed * 2) * 4.5) #pulsing scale based on time & sine wave
+	var pulse = 5.5 + (sin(time_elapsed * 2) * 1.5) #pulsing scale based on time & sine wave
 	set_scale(Vector3(pulse, pulse, pulse)) # set the scale continuously using pulse

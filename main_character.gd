@@ -1,8 +1,11 @@
 extends CharacterBody3D
 
-
+var playerCoins = 0
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+#define a new signal when the coin amount changes
+signal coins_changed(new_amount: int)
 
 
 func _physics_process(delta: float) -> void:
@@ -31,3 +34,8 @@ func _physics_process(delta: float) -> void:
 #func _input(event):
 	#print(event.as_text())
 	
+
+#adds 1 coin to playerCoins
+func add_coin():
+	playerCoins += 1
+	coins_changed.emit(playerCoins)
