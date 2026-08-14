@@ -9,6 +9,9 @@ signal coins_changed(new_amount: int)
 
 
 func _physics_process(delta: float) -> void:
+
+	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -29,6 +32,15 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	#Make CameraController match the position of the character
+	#the dollar sign lets you access a node within the root node by name
+	# reference the position of the CameraController and set it equal to the
+	# position of the root node, which needs no call 
+	# MainCharacter.position == position. 
+	# lerp(from,to,how fast) - Using delta should be considered as it would make 
+	# the follow speed the same on all machines. Consider clamp in 3rd arg. 
+	$CameraController.position = lerp($CameraController.position,position,clamp(60*0.15*delta,0.15,1))
 
 # Print the input event to Output (key press, mouse buttons/movement)
 #func _input(event):

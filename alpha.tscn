@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dn0m6y3g5qxt3" path="res://block_rigid.tscn" id="1_8fsme"]
 [ext_resource type="PackedScene" uid="uid://c6yc8dt4xxehh" path="res://block_static.tscn" id="2_dfvcg"]
+[ext_resource type="Environment" uid="uid://b317hnivalsag" path="res://Assets/EnvironmentResources/AlphaEnvironment.tres" id="2_omt4j"]
 [ext_resource type="PackedScene" uid="uid://0u1cedglc1i0" path="res://main_character.tscn" id="2_unq0f"]
 [ext_resource type="Texture2D" uid="uid://cq2bnh3x7iqkc" path="res://icon.svg" id="3_5w10q"]
 [ext_resource type="PackedScene" uid="uid://bx2aifw53pnh0" path="res://coin.tscn" id="3_kjnjc"]
@@ -11,7 +12,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jahai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
-albedo_color = Color(0.37834537, 0.45756543, 0.2468194, 1)
+albedo_color = Color(0.38592562, 0.6062255, 0.574771, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jahai"]
 material = SubResource("StandardMaterial3D_rbrcd")
@@ -24,14 +25,52 @@ size = Vector3(15, 1, 15)
 
 [node name="UI" parent="." unique_id=1379572987 instance=ExtResource("7_rhi8f")]
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=761353040]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1167773529]
+environment = ExtResource("2_omt4j")
+
+[node name="Floors" type="Node3D" parent="." unique_id=1659304676]
+
+[node name="Floor1" type="StaticBody3D" parent="Floors" unique_id=761353040]
 physics_material_override = SubResource("PhysicsMaterial_jahai")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=658254848]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor1" unique_id=658254848]
 mesh = SubResource("BoxMesh_jahai")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=157028975]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor1" unique_id=157028975]
+shape = SubResource("BoxShape3D_jahai")
+
+[node name="Floor2" type="StaticBody3D" parent="Floors" unique_id=1820213655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+physics_material_override = SubResource("PhysicsMaterial_jahai")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor2" unique_id=1756949108]
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor2" unique_id=788335256]
+shape = SubResource("BoxShape3D_jahai")
+
+[node name="Floor3" type="StaticBody3D" parent="Floors" unique_id=638244896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -18)
+physics_material_override = SubResource("PhysicsMaterial_jahai")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor3" unique_id=37053496]
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor3" unique_id=869582612]
+shape = SubResource("BoxShape3D_jahai")
+
+[node name="Floor4" type="StaticBody3D" parent="Floors" unique_id=366923991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_jahai")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor4" unique_id=1009968522]
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor4" unique_id=1330919873]
 shape = SubResource("BoxShape3D_jahai")
 
 [node name="Lights" type="Node3D" parent="." unique_id=1168999914]
@@ -93,19 +132,11 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.41
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23015785, 1, 5.5929174)
 metadata/_edit_group_ = true
 
-[node name="camFollow" type="Camera3D" parent="MainCharacter" unique_id=1625244619]
-transform = Transform3D(1, 0, 0, 0, 0.9063079, 0.42261833, 0, -0.42261833, 0.9063079, 0, 3.9925947, 4.895604)
-
-[node name="lightFollow" type="SpotLight3D" parent="MainCharacter" unique_id=568376189]
-light_color = Color(0.45243657, 0.49657524, 1, 1)
-light_energy = 11.218
-shadow_enabled = true
-
 [node name="CameraWorld" type="Camera3D" parent="." unique_id=1340696514]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6.9275837, 8.509579)
 
 [node name="sprite_godot" type="Sprite3D" parent="." unique_id=1561044362]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5.3772435, -9.296546)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 8.455567, 5.3772435, -9.296546)
 texture = ExtResource("3_5w10q")
 script = ExtResource("4_qcnow")
 

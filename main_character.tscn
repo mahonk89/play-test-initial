@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cxg1cyjc4o661" path="res://main_character.gd" id="1_48ufq"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8872s"]
+albedo_color = Color(0.43812, 0.0020827139, 0.9843369, 1)
+metallic = 0.34
+roughness = 0.3
+
 [sub_resource type="PrismMesh" id="PrismMesh_rbrcd"]
+material = SubResource("StandardMaterial3D_8872s")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rbrcd"]
 
@@ -14,3 +20,13 @@ mesh = SubResource("PrismMesh_rbrcd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311911187]
 shape = SubResource("BoxShape3D_rbrcd")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=431257370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=48444377]
+transform = Transform3D(1, 0, 0, 0, 0.9335804, 0.35836795, 0, -0.35836795, 0.9335804, 0, 2, 4)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=403616299]
+current = true
