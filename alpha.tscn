@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dt0nyo2iw0axe"]
 
 [ext_resource type="PackedScene" uid="uid://dn0m6y3g5qxt3" path="res://block_rigid.tscn" id="1_8fsme"]
+[ext_resource type="Script" uid="uid://dy80s5oxgye2j" path="res://alpha.gd" id="1_idu2h"]
 [ext_resource type="PackedScene" uid="uid://c6yc8dt4xxehh" path="res://block_static.tscn" id="2_dfvcg"]
 [ext_resource type="Environment" uid="uid://b317hnivalsag" path="res://Assets/EnvironmentResources/AlphaEnvironment.tres" id="2_omt4j"]
 [ext_resource type="PackedScene" uid="uid://0u1cedglc1i0" path="res://main_character.tscn" id="2_unq0f"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bx2aifw53pnh0" path="res://coin.tscn" id="3_kjnjc"]
 [ext_resource type="Script" uid="uid://dbjwabpdspb5u" path="res://sprite_godot.gd" id="4_qcnow"]
 [ext_resource type="PackedScene" uid="uid://cc2mu6p0ixjeq" path="res://ui.tscn" id="7_rhi8f"]
+[ext_resource type="Script" uid="uid://tsakkatevi00" path="res://death_barrier.gd" id="10_nc0gy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jahai"]
 
@@ -21,7 +23,10 @@ size = Vector3(15, 1, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jahai"]
 size = Vector3(15, 1, 15)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jahai"]
+
 [node name="Alpha" type="Node3D" unique_id=1266480185]
+script = ExtResource("1_idu2h")
 
 [node name="UI" parent="." unique_id=1379572987 instance=ExtResource("7_rhi8f")]
 
@@ -140,4 +145,13 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 8.455567, 5.3772435, -9.29654
 texture = ExtResource("3_5w10q")
 script = ExtResource("4_qcnow")
 
+[node name="DeathBarrier" type="Area3D" parent="." unique_id=1246719989]
+script = ExtResource("10_nc0gy")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBarrier" unique_id=1817762969]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
+shape = SubResource("WorldBoundaryShape3D_jahai")
+
 [connection signal="coins_changed" from="MainCharacter" to="UI" method="_on_main_character_coins_changed"]
+[connection signal="body_entered" from="DeathBarrier" to="MainCharacter" method="_on_death_barrier_body_entered"]
