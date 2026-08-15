@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvr7o4tlxddw5"
+path="res://.godot/imported/pipe_split.obj-a8d4758bae49731da3ea89e0d566104d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe_split.obj-a8d4758bae49731da3ea89e0d566104d.mesh"]
+
+source_file="res://Assets/Models/Models/OBJ format/pipe_split.obj"
+dest_files=["res://.godot/imported/pipe_split.obj-a8d4758bae49731da3ea89e0d566104d.mesh", "res://.godot/imported/pipe_split.obj-a8d4758bae49731da3ea89e0d566104d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,11 +1,11 @@
-[gd_resource type="ArrayMesh" format=4 uid="uid://d0gjqybhj3126"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://d3ihvtvfvgkmn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8872s"]
 resource_name = "Material.001"
 cull_mode = 2
 albedo_color = Color(0.9063318, 0.563593, 0, 1)
 metallic = 1.0
-roughness = 0.05
+roughness = 0.15
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i3vqx"]
 _surfaces = [{

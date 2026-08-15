@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bolkknh1j4tp"
+path="res://.godot/imported/rock_crystals.obj-4f1471dbbfee59d69605cd51b4d8fe63.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rock_crystals.obj-4f1471dbbfee59d69605cd51b4d8fe63.mesh"]
+
+source_file="res://Assets/Models/Models/OBJ format/rock_crystals.obj"
+dest_files=["res://.godot/imported/rock_crystals.obj-4f1471dbbfee59d69605cd51b4d8fe63.mesh", "res://.godot/imported/rock_crystals.obj-4f1471dbbfee59d69605cd51b4d8fe63.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
