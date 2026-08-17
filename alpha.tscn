@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dt0nyo2iw0axe"]
 
-[ext_resource type="PackedScene" uid="uid://dn0m6y3g5qxt3" path="res://block_rigid.tscn" id="1_8fsme"]
 [ext_resource type="Script" uid="uid://dy80s5oxgye2j" path="res://alpha.gd" id="1_idu2h"]
 [ext_resource type="PackedScene" uid="uid://c6yc8dt4xxehh" path="res://block_static.tscn" id="2_dfvcg"]
 [ext_resource type="Environment" uid="uid://b317hnivalsag" path="res://Assets/EnvironmentResources/AlphaEnvironment.tres" id="2_omt4j"]
@@ -12,18 +11,6 @@
 [ext_resource type="Script" uid="uid://tsakkatevi00" path="res://death_barrier.gd" id="10_nc0gy"]
 [ext_resource type="MeshLibrary" uid="uid://8f5fj3htib2" path="res://Assets/Meshes/BlockMesh.tres" id="11_3oo7n"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jahai"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
-albedo_color = Color(0.38592562, 0.6062255, 0.574771, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jahai"]
-material = SubResource("StandardMaterial3D_rbrcd")
-size = Vector3(15, 1, 15)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jahai"]
-size = Vector3(15, 1, 15)
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jahai"]
 
 [node name="Alpha" type="Node3D" unique_id=1266480185]
@@ -34,89 +21,38 @@ script = ExtResource("1_idu2h")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1167773529]
 environment = ExtResource("2_omt4j")
 
-[node name="Floors" type="Node3D" parent="." unique_id=1659304676]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.194439, 0)
-visible = false
-
-[node name="Floor1" type="StaticBody3D" parent="Floors" unique_id=761353040]
-physics_material_override = SubResource("PhysicsMaterial_jahai")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor1" unique_id=658254848]
-mesh = SubResource("BoxMesh_jahai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor1" unique_id=157028975]
-shape = SubResource("BoxShape3D_jahai")
-
-[node name="Floor2" type="StaticBody3D" parent="Floors" unique_id=1820213655]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
-physics_material_override = SubResource("PhysicsMaterial_jahai")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor2" unique_id=1756949108]
-mesh = SubResource("BoxMesh_jahai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor2" unique_id=788335256]
-shape = SubResource("BoxShape3D_jahai")
-
-[node name="Floor3" type="StaticBody3D" parent="Floors" unique_id=638244896]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -18)
-physics_material_override = SubResource("PhysicsMaterial_jahai")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor3" unique_id=37053496]
-mesh = SubResource("BoxMesh_jahai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor3" unique_id=869582612]
-shape = SubResource("BoxShape3D_jahai")
-
-[node name="Floor4" type="StaticBody3D" parent="Floors" unique_id=366923991]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
-physics_material_override = SubResource("PhysicsMaterial_jahai")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floors/Floor4" unique_id=1009968522]
-mesh = SubResource("BoxMesh_jahai")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor4" unique_id=1330919873]
-shape = SubResource("BoxShape3D_jahai")
-
 [node name="Lights" type="Node3D" parent="." unique_id=1168999914]
 
 [node name="LightMain" type="DirectionalLight3D" parent="Lights" unique_id=202295799]
 transform = Transform3D(1, 0, 0, 0, -0.38805655, 0.92163557, 0, -0.92163557, -0.38805655, 0, 8.53004, -1.3501334)
 shadow_enabled = true
 
-[node name="Blocks_Rigid" type="Node3D" parent="." unique_id=1946840933]
-
-[node name="block_rigid1" parent="Blocks_Rigid" unique_id=1077876099 instance=ExtResource("1_8fsme")]
-transform = Transform3D(0.84625566, 0.532777, 0, -0.38139126, 0.6057966, -0.6982486, -0.37201083, 0.59089684, 0.7158553, -4.609433, 2.7298033, -2.6944742)
-
-[node name="block_rigid2" parent="Blocks_Rigid" unique_id=1431581556 instance=ExtResource("1_8fsme")]
-transform = Transform3D(0.84625566, 0.532777, 0, -0.5318417, 0.8447701, -0.05922553, -0.031554013, 0.050119996, 0.9982445, 4.3342466, 4.096104, -5.121748)
+[node name="LightMain2" type="DirectionalLight3D" parent="Lights" unique_id=879454441]
+transform = Transform3D(1, 0, 0, 0, -0.38805655, 0.92163557, 0, -0.92163557, -0.38805655, 0, 9.679137, -16.362764)
+shadow_enabled = true
 
 [node name="Blocks_Static" type="Node3D" parent="." unique_id=1928786981]
 
 [node name="blockStatic1" parent="Blocks_Static" unique_id=997128876 instance=ExtResource("2_dfvcg")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.86932397, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.130676, -3.3151965)
 
 [node name="blockStatic2" parent="Blocks_Static" unique_id=20235980 instance=ExtResource("2_dfvcg")]
-transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, 3.3576326, 0.88189054, 0)
+transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, 6.3576326, -0.118109465, 0)
 
 [node name="Coins" type="Node3D" parent="." unique_id=2135970350]
 metadata/_edit_group_ = true
 
 [node name="coin1" parent="Coins" unique_id=583558464 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.3129468, -0.44775486)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.3524065, -10.268906)
 
 [node name="coin2" parent="Coins" unique_id=1065922726 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.1790037, 1.0107651, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.134691, 1.1908708, -13.229738)
 
 [node name="coin3" parent="Coins" unique_id=728922373 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.3922148, 2.915008, 0.5745933)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.9260468, -0.8031769, -0.9883448)
 
 [node name="coin4" parent="Coins" unique_id=870938311 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.8937943, 2.915008, -0.6411636)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.91857, 0.33639336, -12.912914)
 
 [node name="coin5" parent="Coins" unique_id=155292799 instance=ExtResource("3_kjnjc")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.59372926, 1.0559292, -6.4493084)
@@ -157,8 +93,12 @@ metadata/_edit_group_ = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
 shape = SubResource("WorldBoundaryShape3D_jahai")
 
-[node name="GridMap" type="GridMap" parent="." unique_id=2081379661]
+[node name="GroundGridMap" type="GridMap" parent="." unique_id=2081379661]
 mesh_library = ExtResource("11_3oo7n")
+data = {
+"cells": PackedInt32Array(-65543, 65531, 0, -65543, 65532, 0, -65543, 65533, 0, -65543, 65534, 0, -65543, 65535, 0, -65543, 0, 0, -65543, 1, 0, -65543, 2, 0, -65543, 3, 0, -65543, 4, 0, -65543, 5, 0, -65542, 65531, 0, -65542, 65532, 0, -65542, 65533, 0, -65542, 65534, 0, -65542, 65535, 0, -65542, 0, 0, -65542, 1, 0, -65542, 2, 0, -65542, 3, 0, -65542, 4, 0, -65542, 5, 0, -65541, 65531, 0, -65541, 65532, 0, -65541, 65533, 0, -65541, 65534, 0, -65541, 65535, 0, -65541, 0, 0, -65541, 1, 0, -65541, 2, 0, -65541, 3, 0, -65541, 4, 0, -65541, 5, 0, -65540, 65531, 0, -65540, 65532, 0, -65540, 65534, 0, -65540, 65535, 0, -65540, 0, 0, -65540, 1, 0, -65540, 3, 0, -65540, 4, 0, -65540, 5, 0, -65539, 65531, 0, -65539, 65532, 0, -65539, 65533, 0, -65539, 65534, 0, -65539, 65535, 0, -65539, 0, 0, -65539, 1, 0, -65539, 2, 0, -65539, 3, 0, -65539, 4, 0, -65539, 5, 0, -65538, 65531, 0, -65538, 65532, 0, -65538, 65533, 0, -65538, 65534, 0, -65538, 65535, 0, -65538, 0, 0, -65538, 1, 0, -65538, 2, 0, -65538, 3, 0, -65538, 4, 0, -65538, 5, 0, -65537, 65531, 0, -65537, 65532, 0, -65537, 65533, 0, -65537, 65534, 0, -65537, 65535, 0, -65537, 0, 0, -65537, 1, 0, -65537, 2, 0, -65537, 3, 0, -65537, 4, 0, -65537, 5, 0, -131072, 65531, 0, -131072, 65532, 0, -131072, 65533, 0, -131072, 65534, 0, -131072, 65535, 0, -131072, 0, 0, -131072, 1, 0, -131072, 2, 0, -131072, 3, 0, -131072, 4, 0, -131072, 5, 0, -131071, 65531, 0, -131071, 65532, 0, -131071, 65533, 0, -131071, 65534, 0, -131071, 0, 0, -131071, 1, 0, -131071, 2, 0, -131071, 3, 0, -131071, 4, 0, -131071, 5, 0, -131070, 65531, 0, -131070, 65532, 0, -131070, 65533, 0, -131070, 65534, 0, -131070, 65535, 0, -131070, 0, 0, -131070, 1, 0, -131070, 2, 0, -131070, 3, 0, -131070, 4, 0, -131070, 5, 0, -131069, 65531, 0, -131069, 65532, 0, -131069, 65533, 0, -131069, 65534, 0, -131069, 65535, 0, -131069, 0, 0, -131069, 1, 0, -131069, 2, 0, -131069, 3, 0, -131069, 4, 0, -131069, 5, 0, -131068, 65531, 0, -131068, 65532, 0, -131068, 65533, 0, -131068, 65534, 0, -131068, 65535, 0, -131068, 0, 0, -131068, 1, 0, -131068, 2, 0, -131068, 3, 0, -131068, 4, 0, -131068, 5, 0, -131067, 65531, 0, -131067, 65532, 0, -131067, 65533, 0, -131067, 65535, 0, -131067, 0, 0, -131067, 1, 0, -131067, 3, 0, -131067, 4, 0, -131067, 5, 0, -131066, 65531, 0, -131066, 65532, 0, -131066, 65533, 0, -131066, 65534, 0, -131066, 65535, 0, -131066, 0, 0, -131066, 1, 0, -131066, 2, 0, -131066, 3, 0, -131066, 4, 0, -131066, 5, 0, -7, 65530, 5, -6, 65530, 5, -5, 65530, 5, -4, 65530, 5, -3, 65530, 5, -2, 65530, 5, -65535, 65530, 5, -65534, 65530, 5, -65533, 65530, 5, -65532, 65530, 5, -65531, 65530, 5, -65530, 65530, 5, -1, 65530, 655362, -65536, 65530, 655362, -65536, 65529, 655361, -1, 65529, 655361, -65536, 65528, 655364, -65535, 65529, 1048580, -2, 65529, 1441796, -2, 65528, 1048581, -65534, 65529, 1048576, -65534, 65527, 1048576, -65534, 65528, 1048576, 65535, 65527, 655362, 0, 65527, 655362, 65535, 65526, 655364, 0, 65526, 655364, 131071, 65525, 655362, 65536, 65525, 655362, -65535, 65528, 1441797, -65535, 65527, 1441797, -65535, 65526, 1441797, -65535, 65525, 1441797, -65535, 65524, 1441797, 1, 65527, 1441797, 1, 65526, 1441797, 1, 65525, 1441797, 1, 65524, 1441797, 65537, 65525, 1441797, 65537, 65524, 1441797, 65537, 65526, 1441798, 1, 65528, 1441798, 65535, 65525, 1441797, -2, 65527, 1048581, -2, 65526, 1048581, -2, 65525, 1048581, -2, 65524, 1048581, 43974656, 65511, 655364, 44040192, 65509, 655364, 44040192, 65510, 655362, 44105728, 65508, 655362, -1, 65528, 655364, 65534, 65527, 1048581, 65534, 65526, 1048581, 65534, 65525, 1048581, 65534, 65524, 1048581, 131070, 65525, 1048581, 131070, 65524, 1048581, 131070, 65526, 327686, 65534, 65528, 327686, -3, 65529, 327680, -3, 65528, 327680, -3, 65527, 327680, 65533, 65526, 655362, 65533, 65525, 655361, 65533, 65524, 655361, 65533, 65523, 655361, 65533, 65522, 655361, 131071, 65524, 655361, 65536, 65524, 655361, 65536, 65523, 655361, 131071, 65523, 655361, 131070, 65523, 1048578, 65532, 65523, 1048581, 131068, 65523, 1048581, 131070, 65522, 655363, 65537, 65522, 1048579, 65536, 65522, 2, 131071, 65522, 2, 65537, 65523, 1441794, 2, 65526, 655362, 2, 65525, 655361, 2, 65524, 655361, 2, 65523, 655361, 2, 65522, 655361, 1, 65522, 1048581, 1, 65523, 1048581, 65534, 65522, 1441797, 65534, 65523, 1441797, 3, 65523, 1441797, 65539, 65523, 1441797, -65530, 65531, 1048583, -65530, 65532, 1048583, -65530, 65533, 1048583, -65530, 65534, 1048583, -65530, 65535, 1048583, -65530, 0, 1048583, -65530, 1, 1048583, -65530, 2, 1048583, -65530, 3, 1048583, -65530, 4, 1048583, -65530, 5, 1048583, -6, 5, 7, -5, 5, 7, -4, 5, 7, -3, 5, 7, -2, 5, 7, -1, 5, 7, -65536, 5, 7, -65535, 5, 7, -65534, 5, 7, -65533, 5, 7, -65532, 5, 7, -65531, 5, 7, -7, 65531, 1441799, -7, 65532, 1441799, -7, 65533, 1441799, -7, 65534, 1441799, -7, 65535, 1441799, -7, 0, 1441799, -7, 1, 1441799, -7, 2, 1441799, -7, 3, 1441799, -7, 4, 1441799, -7, 5, 1441799)
+}
+metadata/_editor_floor_ = Vector3(-1, -2, -5)
 
 [connection signal="coins_changed" from="MainCharacter" to="UI" method="_on_main_character_coins_changed"]
 [connection signal="body_entered" from="DeathBarrier" to="MainCharacter" method="_on_death_barrier_body_entered"]

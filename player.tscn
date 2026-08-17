@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dumismej1ils8"]
+
+[ext_resource type="Script" uid="uid://b6a7ye1w06t54" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jahai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
+albedo_color = Color(0.23800002, 0.6063333, 0.68, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jahai"]
+material = SubResource("StandardMaterial3D_rbrcd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_jahai"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rbrcd"]
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=1432385721]
+script = ExtResource("1_4flbx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=219559128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jahai")
+
+[node name="Meshes" type="Node3D" parent="." unique_id=1865655301]
+metadata/_edit_group_ = true
+
+[node name="Body" type="MeshInstance3D" parent="Meshes" unique_id=1281483971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jahai")
+
+[node name="Goggles" type="MeshInstance3D" parent="Meshes" unique_id=1548658922]
+transform = Transform3D(0.8, 0, 0, 0, 0.226, 0, 0, 0, 0.41, 0, 1.541, -0.3)
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="LeftLeg" type="MeshInstance3D" parent="Meshes" unique_id=1210601403]
+transform = Transform3D(0.39999998, 0, 0, 0, 1, 0, 0, 0, 0.39999998, -0.3987733, 0.5, 0)
+mesh = SubResource("CapsuleMesh_rbrcd")
+
+[node name="RightLeg" type="MeshInstance3D" parent="Meshes" unique_id=149511544]
+transform = Transform3D(0.39999998, 0, 0, 0, 1, 0, 0, 0, 0.39999998, 0.399, 0.5, 0)
+mesh = SubResource("CapsuleMesh_rbrcd")

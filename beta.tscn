@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cvhbyul5nndqr"]
+
+[ext_resource type="PackedScene" uid="uid://dumismej1ils8" path="res://player.tscn" id="1_hivpe"]
+[ext_resource type="PackedScene" uid="uid://cfnbewk438r3j" path="res://camera_controller_Player.tscn" id="2_84vcy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
+albedo_color = Color(0.46172792, 0.21684289, 0.08420191, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jahai"]
+material = SubResource("StandardMaterial3D_rbrcd")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jahai"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ruwy0"]
+sky_top_color = Color(0.48853946, 0.6563265, 0.96583277, 1)
+sky_horizon_color = Color(0.3254902, 0.6901961, 0.9490196, 1)
+ground_bottom_color = Color(0.13436136, 0.052008934, 0.0042572552, 1)
+ground_horizon_color = Color(0.3254902, 0.6901961, 0.9490196, 1)
+ground_curve = 0.015
+
+[sub_resource type="Sky" id="Sky_rbrcd"]
+sky_material = SubResource("ProceduralSkyMaterial_ruwy0")
+
+[sub_resource type="Environment" id="Environment_jahai"]
+background_mode = 2
+sky = SubResource("Sky_rbrcd")
+
+[node name="Beta" type="Node3D" unique_id=1798520152]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1051559332]
+
+[node name="Ground" type="StaticBody3D" parent="Environment" unique_id=1811967807]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground" unique_id=1480450451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground" unique_id=294354776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_jahai")
+
+[node name="Entities" type="Node3D" parent="." unique_id=573428335]
+
+[node name="Player" parent="Entities" unique_id=1432385721 instance=ExtResource("1_hivpe")]
+
+[node name="CameraController" parent="Entities/Player" unique_id=594666039 instance=ExtResource("2_84vcy")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189634957]
+environment = SubResource("Environment_jahai")
