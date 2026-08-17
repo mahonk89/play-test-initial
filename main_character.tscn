@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0u1cedglc1i0"]
 
 [ext_resource type="Script" uid="uid://cxg1cyjc4o661" path="res://main_character.gd" id="1_48ufq"]
+[ext_resource type="Script" uid="uid://y62bb8ey42ts" path="res://camera_controller.gd" id="2_wmkwl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8872s"]
 albedo_color = Color(0.43812, 0.0020827139, 0.9843369, 1)
@@ -24,6 +25,7 @@ shape = SubResource("BoxShape3D_rbrcd")
 [node name="CameraController" type="Node3D" parent="." unique_id=431257370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 top_level = true
+script = ExtResource("2_wmkwl")
 
 [node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=48444377]
 transform = Transform3D(1, 0, 0, 0, 0.9335804, 0.35836795, 0, -0.35836795, 0.9335804, 0, 2, 4)

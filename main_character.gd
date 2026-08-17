@@ -13,25 +13,28 @@ var is_dragging: bool = false
 #define a new signal when the coin amount changes
 signal coins_changed(new_amount: int)
 
-func _ready() -> void:
-	startPosition = global_position
 
 #Make Character rotate when holding right click - in turn, camera should follow.
 #Rotation should be y axis (left and right) and x axis (up and down)
 func _input(event: InputEvent) -> void:
-	
 	# Check if left mouse button is clicked/released
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_dragging = event.pressed
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-#		else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			if is_dragging:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			
 	# Rotate character when dragging the mouse
 	elif event is InputEventMouseMotion and is_dragging:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 	if event.is_action_released("MB2"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _ready() -> void:
+	startPosition = global_position
+
+
 
 func _sprint() -> void: 
 	pass

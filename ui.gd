@@ -2,12 +2,14 @@ extends Control
 
 @onready var coin_label : Label = $CoinLabel
 
+
 #func update_coin_amount(amount : int) -> void:
 	#coin_label.text = "Coins: " + str(amount)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

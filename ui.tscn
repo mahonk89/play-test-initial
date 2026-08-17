@@ -18,8 +18,10 @@ script = ExtResource("1_fyqef")
 
 [node name="CoinLabel" type="Label" parent="." unique_id=1417673051]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 87.0
+offset_left = 11.0
+offset_top = 18.0
+offset_right = 159.0
+offset_bottom = 105.0
 text = "Coins: 0
 "
 label_settings = SubResource("LabelSettings_48ufq")
