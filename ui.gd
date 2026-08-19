@@ -1,8 +1,17 @@
 extends Control
 
+# Consider adding an array for all labels that should be together. i.e., right now we have Coins 
+#and stamina at the top left - things that keep track of what is currently happening. Perhaps
+#all of these should be in var current : Array = [coins, stamina,... health, etc.]
+# So then this list can be called to the screen keeping a good order (insteaed of adding and 
+# workig with individually)
+
 @onready var coin_label : Label = $CoinLabel
-@onready var stamina_label : Label = $Stamina
+@onready var stamina_label : Label = $Stamina #Consider a fill bar instead of numbers. 
+@onready var win_label : Label = $WinLabel
+@onready var coins_to_win : Label = $CoinsToWin
 var player_1 : Node3D # declaring a blank variable as Node3D for _ready() function
+var level_1: Node3D #
 
 
 #func update_coin_amount(amount : int) -> void:
@@ -10,7 +19,8 @@ var player_1 : Node3D # declaring a blank variable as Node3D for _ready() functi
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#get_tree() returns the scene tree that contains this node. This node is a scene within alpha, 
+	win_label.visible = false
+#get_tree() returns the scene tree that contains this node. This node is a scene within alpha, 
 	#so it will be calling alpha // get_nodes_in_group creates an array of all the nodes in the Global group
 	#in this case "Players" which has 1 Node3D in the group. Use [n] to pull the n+1 node from that array
 	# which will be the first player in that group aka MainCharacter. 
@@ -18,7 +28,13 @@ func _ready() -> void:
 	#By doing this, I can now call properties and methods of player_1 (MainCharacter) in this script.
 	player_1 = get_tree().get_nodes_in_group("Players")[0]
 	
+	#Set Stamina bar to show current stamina in relation to maximum stamina
 	stamina_label.text =  "Stamina: " + str(player_1.stamina) + "/" + str(player_1.maxStamina)
+	
+	#Set Coins to win as level goal label
+	level_1 = get_parent()
+	coins_to_win.text = "You need " + str(level_1.coins_to_win) + " coins to win."
+	
 
 
 
@@ -46,3 +62,7 @@ func _on_main_character_coins_changed(new_amount: int) -> void:
 func _on_main_character_stamina_changes(current_stam: float) -> void:
 	stamina_label.text = "Stamina: " + str(clampi(int(current_stam),0,player_1.maxStamina)) \
 	+ "/" + str(player_1.maxStamina)  # current stam is float, we don't need non-integer value appearing on screen. 
+
+
+func _on_main_character_win_game() -> void:
+	win_label.visible = true

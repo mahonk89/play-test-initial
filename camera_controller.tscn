@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c5b581e874mpr"]
+
+[ext_resource type="Script" uid="uid://y62bb8ey42ts" path="res://camera_controller.gd" id="1_8y15a"]
+
+[node name="CameraController" type="Node3D" unique_id=1780388527]
+top_level = true
+script = ExtResource("1_8y15a")
+mouse_sensitivity = 0.004
+
+[node name="CameraTarget" type="Node3D" parent="." unique_id=255982296]
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, 0, 0, 4)
+
+[node name="Camera3D" type="Camera3D" parent="CameraTarget" unique_id=962723632]

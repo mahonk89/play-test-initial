@@ -42,15 +42,15 @@ mesh = SubResource("CapsuleMesh_2q423")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_jahai")
 
-[node name="CameraController" type="Node3D" parent="." unique_id=431257370]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-top_level = true
-script = ExtResource("2_wmkwl")
-
-[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=48444377]
-transform = Transform3D(1, 0, 0, 0, 0.9335804, 0.35836795, 0, -0.35836795, 0.9335804, 0, 2, 4)
-
-[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=1966679685]
-
 [node name="Ray" type="RayCast3D" parent="." unique_id=389385654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+
+[node name="CameraController" type="Node3D" parent="." unique_id=1780388527]
+top_level = true
+script = ExtResource("2_wmkwl")
+mouse_sensitivity = 0.004
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=255982296]
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, 0, 2, 4)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=962723632]

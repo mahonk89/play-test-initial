@@ -25,5 +25,5 @@ func _on_body_entered(body: Node3D) -> void:
 	
 
 
-func _on_bounce_animation_finished(anim_name: StringName) -> void:
+func _on_bounce_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

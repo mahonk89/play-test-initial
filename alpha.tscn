@@ -13,16 +13,24 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jahai"]
 
-[node name="Alpha" type="Node3D" unique_id=1266480185]
+[node name="Alpha" type="Node3D" unique_id=1266480185 groups=["Levels"]]
 script = ExtResource("1_idu2h")
+coins_to_win = 4
 
 [node name="UI" parent="." unique_id=1379572987 instance=ExtResource("7_rhi8f")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1167773529]
 environment = ExtResource("2_omt4j")
 
-[node name="MainCharacter" parent="." unique_id=1547992771 groups=["Players"] instance=ExtResource("2_unq0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23015785, 1.9507821, 5.5929174)
+[node name="Characters" type="Node3D" parent="." unique_id=604583071]
+
+[node name="MainCharacter" parent="Characters" unique_id=1547992771 groups=["Players"] instance=ExtResource("2_unq0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="BorncgCharacter" parent="Characters" unique_id=885805630 instance_placeholder="res://borncg_character.tscn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+visible = false
+metadata/_edit_group_ = true
 
 [node name="Lights" type="Node3D" parent="." unique_id=1168999914]
 
@@ -37,10 +45,13 @@ shadow_enabled = true
 [node name="Blocks_Static" type="Node3D" parent="." unique_id=1928786981]
 
 [node name="blockStatic1" parent="Blocks_Static" unique_id=997128876 instance=ExtResource("2_dfvcg")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.130676, -3.3151965)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.130676, -6.7882776)
 
 [node name="blockStatic2" parent="Blocks_Static" unique_id=20235980 instance=ExtResource("2_dfvcg")]
-transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, 6.3576326, -0.118109465, 0)
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 8, -0.118, 0.03)
+
+[node name="blockStatic3" parent="Blocks_Static" unique_id=438436037 instance=ExtResource("2_dfvcg")]
+transform = Transform3D(0.7135294, -0.41252542, -2.884562, 1.5015528, 2.597179, -6.563496e-08, 2.4972413, -1.4437741, 0.8241975, 7.4994063, -1.130676, -4.858528)
 
 [node name="Coins" type="Node3D" parent="." unique_id=2135970350]
 metadata/_edit_group_ = true
@@ -55,29 +66,25 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.13
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.9260468, -0.8031769, -0.9883448)
 
 [node name="coin4" parent="Coins" unique_id=870938311 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.91857, 0.33639336, -12.912914)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.91857, 1.3363934, -12.912914)
 
 [node name="coin5" parent="Coins" unique_id=155292799 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.59372926, 1.0559292, -6.4493084)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.0040922165, 1.0559292, -6.8229465)
 
 [node name="coin6" parent="Coins" unique_id=1135424236 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.390789, 2.915008, -0.6200721)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8, 1.915, -1.3822216)
 
 [node name="coin7" parent="Coins" unique_id=1828026272 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.9905803, 1.2961717, 3.4459703)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8, 1.296, -0.026864886)
 
 [node name="coin8" parent="Coins" unique_id=1717802944 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.3656797, 2.915008, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 8, 1.2485714, 1.1469016)
 
 [node name="coin9" parent="Coins" unique_id=489334993 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.3451972, 1.0771866, -3.9602027)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.0043473244, 4.3138294, -27.218876)
 
 [node name="coin10" parent="Coins" unique_id=141161829 instance=ExtResource("3_kjnjc")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.4138222, 2.915008, -1.3107438)
-
-[node name="BorncgCharacter" parent="." unique_id=885805630 instance_placeholder="res://borncg_character.tscn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23015785, 1.9507821, 5.5929174)
-metadata/_edit_group_ = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -12, 3, -9)
 
 [node name="CameraWorld" type="Camera3D" parent="." unique_id=1340696514]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 6.9275837, 8.509579)
@@ -93,7 +100,7 @@ script = ExtResource("10_nc0gy")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBarrier" unique_id=1817762969]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -12, 0)
 shape = SubResource("WorldBoundaryShape3D_jahai")
 
 [node name="GroundGridMap" type="GridMap" parent="." unique_id=2081379661]
@@ -103,7 +110,8 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(-1, -1, -5)
 
-[connection signal="coins_changed" from="MainCharacter" to="UI" method="_on_main_character_coins_changed"]
-[connection signal="stamina_changes" from="MainCharacter" to="UI" method="_on_main_character_stamina_changes"]
-[connection signal="body_entered" from="DeathBarrier" to="MainCharacter" method="_on_death_barrier_body_entered"]
-[connection signal="body_entered" from="DeathBarrier" to="BorncgCharacter" method="_on_death_barrier_body_entered"]
+[connection signal="coins_changed" from="Characters/MainCharacter" to="UI" method="_on_main_character_coins_changed"]
+[connection signal="stamina_changes" from="Characters/MainCharacter" to="UI" method="_on_main_character_stamina_changes"]
+[connection signal="win_game" from="Characters/MainCharacter" to="UI" method="_on_main_character_win_game"]
+[connection signal="body_entered" from="DeathBarrier" to="Characters/MainCharacter" method="_on_death_barrier_body_entered"]
+[connection signal="body_entered" from="DeathBarrier" to="Characters/BorncgCharacter" method="_on_death_barrier_body_entered"]
