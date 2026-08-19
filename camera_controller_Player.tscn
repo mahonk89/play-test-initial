@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dlbodvyfvjdj3" path="res://camera_controller_player.gd" id="1_1cd5u"]
 
-[node name="CameraController" type="Node3D" unique_id=594666039]
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_jahai"]
+
+[node name="CameraController" type="SpringArm3D" unique_id=1784759290]
+shape = SubResource("SeparationRayShape3D_jahai")
+spring_length = 4.0
 script = ExtResource("1_1cd5u")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=52163825]
-transform = Transform3D(1, 0, 0, 0, 0.9396927, 0.34202015, 0, -0.34202015, 0.9396927, 0, 2, 4)
+transform = Transform3D(1, 0, 0, 0, 0.9396927, 0.34202015, 0, -0.34202015, 0.9396927, 0, 0, 0)
+current = true

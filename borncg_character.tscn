@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://0u1cedglc1i0"]
+
+[ext_resource type="Script" uid="uid://cr6jtodamaldw" path="res://main_char_borncg.gd" id="1_wmkwl"]
+[ext_resource type="Script" uid="uid://y62bb8ey42ts" path="res://camera_controller.gd" id="2_wmkwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruwy0"]
+albedo_color = Color(0.24982125, 0.5245808, 0.83014756, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbrcd"]
+material = SubResource("StandardMaterial3D_ruwy0")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jahai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
+albedo_color = Color(0.76239073, 0.47078824, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jahai"]
+material = SubResource("StandardMaterial3D_rbrcd")
+top_radius = 0.0
+bottom_radius = 0.3
+height = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbrcd"]
+
+[node name="BorncgCharacter" type="CharacterBody3D" unique_id=1547992771 groups=["player1"]]
+script = ExtResource("1_wmkwl")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=526687121]
+mesh = SubResource("BoxMesh_rbrcd")
+
+[node name="Eye" type="MeshInstance3D" parent="Body" unique_id=417237735]
+transform = Transform3D(-1.9670125e-08, -0.45, 0, 0.45, -1.9670125e-08, 0, 0, 0, 0.45, 0, 0.19660544, -0.4301473)
+mesh = SubResource("CapsuleMesh_jahai")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=1958202766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.19990681)
+mesh = SubResource("CylinderMesh_jahai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311911187]
+shape = SubResource("BoxShape3D_rbrcd")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=431257370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+top_level = true
+script = ExtResource("2_wmkwl")
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=48444377]
+transform = Transform3D(1, 0, 0, 0, 0.9335804, 0.35836795, 0, -0.35836795, 0.9335804, 0, 2, 4)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=1966679685]
+
+[node name="Ray" type="RayCast3D" parent="." unique_id=389385654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)

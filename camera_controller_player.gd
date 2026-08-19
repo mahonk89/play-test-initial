@@ -4,6 +4,8 @@ extends Node3D
 # vertically (up/down) around that axis (like a gymnast). To MOVE along the y-axis is to go UP and DOWN;
 # to ROTATE along the y-axis, you are rotating horizontally around that axis (like a tetherball). 
 
+var is_dragging := false
+
 @export var y_cameraSensativity := 0.005 # y horizontal
 @export var x_cameraSensativity := 0.005 # x vertical
 #@export var joy_y_acceleration := 1.0 # y horizontal - #d out because it's not implemented yet. 
@@ -11,8 +13,21 @@ extends Node3D
 
 
 # Handles camera rotation in the y direction (left/right)
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseMotion:
+		#rotate_from_vector(event.relative)
+		#rotation.y -= event.relative.x * y_cameraSensativity
+		
+
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	# Check if left mouse button is clicked/released
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			is_dragging = event.pressed
+			if is_dragging:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event is InputEventMouseMotion and is_dragging == true:
 		rotate_from_vector(event.relative)
 		#rotation.y -= event.relative.x * y_cameraSensativity
 
@@ -22,7 +37,7 @@ func rotate_from_vector(v: Vector2):
 		rotation.y -= v.x * y_cameraSensativity
 		rotation.x += v.y * x_cameraSensativity
 		#Does not allow x rotation to go above or below certain limits. 
-		rotation.x = clamp(rotation.x,deg_to_rad(-69),deg_to_rad(20))
+		rotation.x = clamp(rotation.x,deg_to_rad(-60),deg_to_rad(20))
 	
 # Handles controller rotation in y direction (left/right). Everything is commented out because
 # the input maps DO NOT EXIST yet. 

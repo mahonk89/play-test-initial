@@ -1,26 +1,46 @@
-[gd_scene format=3 uid="uid://0u1cedglc1i0"]
+[gd_scene format=3 uid="uid://cs78oshwod4ug"]
 
-[ext_resource type="Script" uid="uid://cxg1cyjc4o661" path="res://main_character.gd" id="1_48ufq"]
+[ext_resource type="Script" uid="uid://cxg1cyjc4o661" path="res://main_character.gd" id="1_wmkwl"]
 [ext_resource type="Script" uid="uid://y62bb8ey42ts" path="res://camera_controller.gd" id="2_wmkwl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8872s"]
-albedo_color = Color(0.43812, 0.0020827139, 0.9843369, 1)
-metallic = 0.34
-roughness = 0.3
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbrcd"]
+albedo_color = Color(0.23800002, 0.6063333, 0.68, 1)
 
-[sub_resource type="PrismMesh" id="PrismMesh_rbrcd"]
-material = SubResource("StandardMaterial3D_8872s")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wmkwl"]
+material = SubResource("StandardMaterial3D_rbrcd")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rbrcd"]
+[sub_resource type="BoxMesh" id="BoxMesh_uvl38"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2q423"]
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jahai"]
 
 [node name="MainCharacter" type="CharacterBody3D" unique_id=1547992771 groups=["player1"]]
-script = ExtResource("1_48ufq")
+script = ExtResource("1_wmkwl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=526687121]
-mesh = SubResource("PrismMesh_rbrcd")
+[node name="BodyMeshes" type="Node3D" parent="." unique_id=1229066296]
+metadata/_edit_group_ = true
+
+[node name="Body" type="MeshInstance3D" parent="BodyMeshes" unique_id=889356743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_wmkwl")
+
+[node name="Goggles" type="MeshInstance3D" parent="BodyMeshes" unique_id=218906105]
+transform = Transform3D(0.8, 0, 0, 0, 0.226, 0, 0, 0, 0.41, 0, 1.541, -0.3)
+mesh = SubResource("BoxMesh_uvl38")
+
+[node name="LeftLeg" type="MeshInstance3D" parent="BodyMeshes" unique_id=16719814]
+transform = Transform3D(0.39999998, 0, 0, 0, 1, 0, 0, 0, 0.39999998, -0.3987733, 0.5, 0)
+mesh = SubResource("CapsuleMesh_2q423")
+
+[node name="RightLeg" type="MeshInstance3D" parent="BodyMeshes" unique_id=2019961096]
+transform = Transform3D(0.39999998, 0, 0, 0, 1, 0, 0, 0, 0.39999998, 0.399, 0.5, 0)
+mesh = SubResource("CapsuleMesh_2q423")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311911187]
-shape = SubResource("BoxShape3D_rbrcd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jahai")
 
 [node name="CameraController" type="Node3D" parent="." unique_id=431257370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -30,5 +50,7 @@ script = ExtResource("2_wmkwl")
 [node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=48444377]
 transform = Transform3D(1, 0, 0, 0, 0.9335804, 0.35836795, 0, -0.35836795, 0.9335804, 0, 2, 4)
 
-[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=403616299]
-current = true
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=1966679685]
+
+[node name="Ray" type="RayCast3D" parent="." unique_id=389385654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)

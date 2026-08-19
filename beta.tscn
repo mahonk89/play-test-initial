@@ -46,6 +46,7 @@ shape = SubResource("BoxShape3D_jahai")
 [node name="Player" parent="Entities" unique_id=1432385721 instance=ExtResource("1_hivpe")]
 
 [node name="CameraController" parent="Entities/Player" unique_id=594666039 instance=ExtResource("2_84vcy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189634957]
 environment = SubResource("Environment_jahai")

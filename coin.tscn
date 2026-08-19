@@ -47,16 +47,81 @@ shadow_mesh = SubResource("ArrayMesh_i3vqx")
 height = 0.1
 radius = 0.2
 
+[sub_resource type="Animation" id="Animation_d5gmh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.2294193e-15, -7.642742e-15, -1.7484555e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_0t63x"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5), Vector3(0, 0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7riw"]
+_data = {
+&"RESET": SubResource("Animation_d5gmh"),
+&"bounce": SubResource("Animation_0t63x")
+}
+
 [node name="coin" type="Area3D" unique_id=583558464]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_d5gmh")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1096882168]
-transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
+transform = Transform3D(0.21, 3.6717566e-08, -1.6049757e-15, -3.6717566e-08, 0.21, -8.8817805e-16, 1.6049756e-15, 8.881783e-16, 0.21, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d5gmh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1380684939]
 shape = SubResource("CylinderShape3D_rbrcd")
 
+[node name="Bounce" type="AnimationPlayer" parent="." unique_id=1678464949]
+libraries/ = SubResource("AnimationLibrary_v7riw")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Bounce" to="." method="_on_bounce_animation_finished"]

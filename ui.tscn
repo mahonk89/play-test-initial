@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://cc2mu6p0ixjeq"]
 
 [ext_resource type="Script" uid="uid://dtvmkdu77m4mj" path="res://ui.gd" id="1_fyqef"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_48ufq"]
-font_size = 30
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://dyms02odrww8o" path="res://coin_label_settings.tres" id="2_m6e0p"]
 
 [node name="UI" type="Control" unique_id=1379572987]
 layout_mode = 3
@@ -24,4 +20,13 @@ offset_right = 159.0
 offset_bottom = 105.0
 text = "Coins: 0
 "
-label_settings = SubResource("LabelSettings_48ufq")
+label_settings = ExtResource("2_m6e0p")
+
+[node name="Stamina" type="Label" parent="." unique_id=2029728587]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 68.0
+offset_right = 111.0
+offset_bottom = 91.0
+text = "Stamina: 100"
+label_settings = ExtResource("2_m6e0p")
