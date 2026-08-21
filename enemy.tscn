@@ -6,6 +6,9 @@ script/source = "extends CharacterBody3D
 
 @export var speed = 5.0
 @export var direction := Vector3(1,0,0)
+var x_mover : bool = direction.x
+var z_mover : bool = direction.z
+
 
 
 func _physics_process(delta: float) -> void:
@@ -22,16 +25,28 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	
+	if is_on_wall():
+		turn_around()
+
 
 
 func turn_around():
-	var dir = direction
-	direction = Vector3.ZERO
-	var turn_tween = create_tween()
+#	var dir = direction #saves current direction
+#	direction = Vector3.ZERO #sets direction to 0 to stop movement
+	var turn_tween = create_tween() # create the tween
+	set_physics_process(false) #stops physics process (including gravity??)
+	#tween does a transformation on on object-.as_relative() makes the transform additive 
 	turn_tween.tween_property(self,\"rotation_degrees\",Vector3(0,180,0),0.6).as_relative()
-	await get_tree().create_timer(0.6).timeout
-	direction.x = dir.x * -1
-	direction.z = dir.z * -1
+	await get_tree().create_timer(0.6).timeout #set timer to begin movement
+	direction.x *= -1 #flips the x direction
+	direction.z *= -1 #flips the z direction
+	set_physics_process(true) #return physics to active state. 
+	# I went with this because there was some issues when I was running into the enemy while it
+	# was rotating, that it began to rotate again for 0.6 but the timer was off, so once it did
+	# begin moving again, it wasn't facing the same direction. This means I also can take out some
+	# of the other steps to stop movement such as setting direction = 0. 
+	
 	
 "
 
