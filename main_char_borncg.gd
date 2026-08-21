@@ -7,12 +7,15 @@ var sprintSpeed = 0.0
 const JUMP_VELOCITY = 9
 var xform : Transform3D
 
+@export var winCoins := 0
+#@export var hud : CanvasLayer
+
 #For Character rotation
 var is_dragging: bool = false
 @export var mouse_sensitivity: float = 0.007
 
 #define a new signal when the coin amount changes
-signal coins_changed(new_amount: int)
+#signal coins_changed(new_amount: int)
 
 
 #Make Character rotate when holding right click - in turn, camera should follow.
@@ -38,6 +41,9 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	startPosition = global_transform
+	
+	#Set Master.playerCoins to 0 so you can restart the level fresh instead of with winCoins
+	Master.playerCoins = 0
 
 
 
@@ -51,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		velocity += 2.5*get_gravity() * delta
 
 	# Add sprint speed and modifier 
-	if Input.is_action_pressed("sprint_mod"):
+	if Input.is_action_pressed("sprint"):
 		sprintSpeed = 5
 	else: sprintSpeed = 0
 	
@@ -118,9 +124,12 @@ func align_with_floor(floor_normal):
 	
 
 #adds 1 coin to Master.playerCoins
-func add_coin():
-	Master.playerCoins += 1
-	coins_changed.emit(Master.playerCoins)
+#func add_coin():
+#	Master.playerCoins += 1
+#	hud.get_node("CoinCount").text = str(Master.playerCoins)
+#	if Master.playerCoins >= winCoins:
+#		get_tree().change_scene_to_file("res://borncg.tscn")
+#	coins_changed.emit(Master.playerCoins)
 
 #function to reset Char to starting position with 0 speed.
 func reset_position():
