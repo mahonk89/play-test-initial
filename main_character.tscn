@@ -17,6 +17,8 @@ height = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jahai"]
 
 [node name="MainCharacter" type="CharacterBody3D" unique_id=1547992771 groups=["player1"]]
+collision_layer = 2
+collision_mask = 541
 script = ExtResource("1_wmkwl")
 
 [node name="BodyMeshes" type="Node3D" parent="." unique_id=1229066296]

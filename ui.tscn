@@ -2,8 +2,48 @@
 
 [ext_resource type="Script" uid="uid://dtvmkdu77m4mj" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="LabelSettings" uid="uid://dyms02odrww8o" path="res://coin_label_settings.tres" id="2_m6e0p"]
+[ext_resource type="Texture2D" uid="uid://0ojcolvgjpu1" path="res://Assets/Pictures/hud_coin.png" id="3_27fn8"]
+[ext_resource type="LabelSettings" uid="uid://b4ncpciu6rlhw" path="res://win_label_settings.tres" id="4_nltto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbrcd"]
+bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jahai"]
+bg_color = Color(0.25929368, 0.25929374, 0.2592936, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruwy0"]
+bg_color = Color(0.6848569, 0.7215962, 6.930828e-06, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="FontFile" id="FontFile_hgk6m"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -24,10 +64,10 @@ cache/0/80/0/underline_position = 0.0
 cache/0/80/0/underline_thickness = 0.0
 cache/0/80/0/scale = 1.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_jahai"]
+[sub_resource type="LabelSettings" id="LabelSettings_ibotj"]
 font = SubResource("FontFile_hgk6m")
 font_size = 80
-font_color = Color(0.28823105, 0.7186513, 0.47715223, 1)
+font_color = Color(0.7315581, 0.11661572, 0.21424246, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 10
@@ -41,44 +81,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fyqef")
 
-[node name="CoinLabel" type="Label" parent="." unique_id=1417673051]
+[node name="CoinPanel" type="Panel" parent="." unique_id=1841558308]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 18.0
-offset_right = 297.0
-offset_bottom = 104.0
-text = "Coins: 0"
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 284.0
+offset_bottom = 124.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rbrcd")
+
+[node name="CoinLabel" type="Label" parent="." unique_id=1417673051]
+z_index = 1
+layout_mode = 0
+offset_left = 132.0
+offset_top = 24.0
+offset_right = 274.0
+offset_bottom = 110.0
+text = "x 0"
 label_settings = ExtResource("2_m6e0p")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1648470519]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 121.0
+offset_bottom = 118.0
+texture = ExtResource("3_27fn8")
+expand_mode = 1
 
 [node name="Stamina" type="Label" parent="." unique_id=2029728587]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.021000002
-anchor_top = 0.08400001
-anchor_right = 0.021000002
-anchor_bottom = 0.08400001
-offset_left = -10.192001
-offset_top = 49.567997
-offset_right = 363.80798
-offset_bottom = 132.568
+offset_left = 14.0
+offset_top = 127.0
+offset_right = 388.0
+offset_bottom = 210.0
 text = "Stamina: 100"
 label_settings = ExtResource("2_m6e0p")
 
-[node name="WinLabel" type="Label" parent="." unique_id=2027376957]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.2
-anchor_right = 0.7
-anchor_bottom = 0.6
-offset_left = 40.399994
-offset_top = 14.399994
-offset_right = -39.599976
-offset_bottom = -94.80002
-text = "You Win!!"
-label_settings = SubResource("LabelSettings_jahai")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="StaminaBar" type="ProgressBar" parent="." unique_id=878698064]
+clip_contents = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 199.0
+offset_right = 393.0
+offset_bottom = 257.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jahai")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ruwy0")
+show_percentage = false
 
 [node name="CoinsToWin" type="Label" parent="." unique_id=1575918116]
 layout_mode = 1
@@ -93,3 +142,35 @@ grow_horizontal = 0
 text = "Coins to Win"
 label_settings = ExtResource("2_m6e0p")
 horizontal_alignment = 2
+
+[node name="WinLabel" type="Label" parent="." unique_id=2027376957]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.6
+offset_left = 40.399994
+offset_top = 14.399994
+offset_right = -39.599976
+offset_bottom = -94.80002
+text = "You Win!!"
+label_settings = ExtResource("4_nltto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoseLabel" type="Label" parent="." unique_id=309928852]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.6
+offset_left = 40.399994
+offset_top = 14.399994
+offset_right = -39.599976
+offset_bottom = -94.80002
+text = "You Lost!!"
+label_settings = SubResource("LabelSettings_ibotj")
+horizontal_alignment = 1
+vertical_alignment = 1

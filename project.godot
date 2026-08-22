@@ -123,6 +123,15 @@ control_ui={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="ground"
+3d_physics/layer_2="players"
+3d_physics/layer_3="collectables"
+3d_physics/layer_4="enemies"
+3d_physics/layer_5="objects"
+3d_physics/layer_10="donotenter"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

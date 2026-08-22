@@ -48,6 +48,20 @@ func turn_around():
 	# of the other steps to stop movement such as setting direction = 0. 
 	
 	
+
+
+func _on_top_body_entered(body: Node3D) -> void:
+	body.kill_enemy()
+	set_physics_process(false)
+	set_collision_layer_value(4,false)
+	var death_tween = create_tween()
+	death_tween.tween_property(self,\"scale\",Vector3.ZERO,0.3).set_delay(0.1)
+	await get_tree().create_timer(1).timeout
+	queue_free()
+
+
+func _on_sides_body_entered(body: Node3D) -> void:
+	body.killed_by_enemy()
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruwy0"]
@@ -57,7 +71,7 @@ roughness = 0.58
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rbrcd"]
 material = SubResource("StandardMaterial3D_ruwy0")
-top_radius = 0.4
+top_radius = 0.8
 bottom_radius = 1.0
 height = 1.0
 
@@ -69,10 +83,20 @@ material = SubResource("StandardMaterial3D_rbrcd")
 size = Vector3(0.8, 0.95, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ruwy0"]
-height = 1.0
+height = 0.9
 radius = 1.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jahai"]
+height = 0.6
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hgk6m"]
+height = 1.0
+radius = 0.9
+
 [node name="Enemy" type="CharacterBody3D" unique_id=682283621]
+collision_layer = 8
+collision_mask = 17
 script = SubResource("GDScript_jahai")
 metadata/_edit_group_ = true
 
@@ -85,5 +109,24 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -
 mesh = SubResource("PrismMesh_jahai")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1842681701]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CylinderShape3D_ruwy0")
+
+[node name="Sides" type="Area3D" parent="." unique_id=835839952]
+collision_layer = 8
+collision_mask = 2
+
+[node name="SideCol" type="CollisionShape3D" parent="Sides" unique_id=2126731323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("CylinderShape3D_jahai")
+
+[node name="Top" type="Area3D" parent="." unique_id=1218269007]
+collision_layer = 8
+collision_mask = 2
+
+[node name="TopCol" type="CollisionShape3D" parent="Top" unique_id=1704780572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_hgk6m")
+
+[connection signal="body_entered" from="Sides" to="." method="_on_sides_body_entered"]
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
